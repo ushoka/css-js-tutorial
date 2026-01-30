@@ -4,7 +4,7 @@
 
 エンジニアから納品されるコードベースの大まかな構造を理解し、緊急時に自分で小さな実装変更・修正ができるようになること
 
-## 参考ページ
+## 実装例の参考ページ
 
 - https://cafe-owners.jp/event/2026/
 
@@ -19,9 +19,29 @@
 
 ## 実践で使うサンプル
 
-このチュートリアルの実践パートは、`example/` にある
-`UCC Smile Festa 2026 開催｜UCCのカフェ開業支援.html` と
-`UCC Smile Festa 2026 開催｜UCCのカフェ開業支援_files/` を使って進めます。
+このチュートリアルの実践パートは、`example/` フォルダにある**シンプルなイベントページ**を使って進めます。
+
+```
+example/
+├── index.html    ← ページ本体
+├── style.css     ← スタイルシート
+└── script.js     ← JavaScript
+```
+
+### 実際のサイトの例（参考用）
+
+より複雑な実装例として、`ucc-smile-festa-2026/` フォルダに実際のウェブサイトを保存したものがあります。
+
+```
+ucc-smile-festa-2026/
+├── UCC Smile Festa 2026 開催｜UCCのカフェ開業支援.html
+└── UCC Smile Festa 2026 開催｜UCCのカフェ開業支援_files/
+    ├── app.css
+    ├── app.js.ダウンロード
+    └── ...（多数のリソースファイル）
+```
+
+チュートリアルを終えた後、実際のサイトがどのように構成されているか参考にしてみてください。
 
 ---
 
@@ -42,7 +62,7 @@
 ```
 サイトのディレクトリ/
 ├── index.html              ← ページ本体
-├── assets/ または _files/  ← リソース
+├── assets/                 ← リソース
 │   ├── css/
 │   │   ├── common.css     ← 共通スタイル
 │   │   └── index.css      ← ページ固有スタイル
@@ -60,13 +80,13 @@
 <html>
   <head>
     <title>ページタイトル</title>
-    <!-- CSSを先に読み込む -->
+    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <!-- ページの内容 -->
 
-    <!-- JavaScriptは最後に読み込む -->
+    <!-- JavaScript -->
     <script src="js/jquery.min.js"></script>
     <!-- ライブラリが先 -->
     <script src="js/script.js"></script>
@@ -75,7 +95,7 @@
 </html>
 ```
 
-**👉 実践**: `example/UCC Smile Festa 2026 開催｜UCCのカフェ開業支援.html` を開いて、この構造を確認してみましょう
+**👉 実践**: `example/index.html` をテキストエディタで開いて、この構造を確認してみましょう。`<head>` でCSSを、`</body>` の直前でJavaScriptを読み込んでいることに注目してください
 
 ---
 
@@ -83,7 +103,7 @@
 
 ### 2.1 なぜ開発者ツールが重要なのか
 
-**緊急時の修正で一番使うツールです！** これができれば、どこを修正すればいいか自分で特定できます。
+**緊急時の修正で一番使うツールです**。これができれば、どこを修正すればいいか自分で特定できます。
 
 ### 2.2 開発者ツールの開き方
 
@@ -105,14 +125,13 @@
 - **ID名**: `id="header"` → `#header`
 - **適用されているCSS**: 右側のStylesパネル
 
-**👉 実践**: `example/UCC Smile Festa 2026 開催｜UCCのカフェ開業支援.html` をブラウザで開いて、ヘッダーのロゴのクラス名を調べてみましょう
+**👉 実践**: `example/index.html` をブラウザで開いて、ヘッダーのロゴ（「Coffee Festa」）のクラス名を調べてみましょう。答え: `header__logo`
 
 ### 2.4 Console（コンソール）タブ - エラー確認とテスト
 
 ```javascript
 // Consoleで試してみよう
 console.log('Hello World');
-$('.element').hide(); // 要素を隠す（jQueryが読み込まれている場合）
 ```
 
 **👉 実践**: Consoleタブでエラーが出ていないか確認してみましょう
@@ -180,14 +199,17 @@ h1 {
 }
 ```
 
-#### 表示/非表示
+#### 非表示
 
 ```css
 .element {
-  display: none; /* 非表示 */
-  display: block; /* 表示 */
-  opacity: 0; /* 透明（場所は確保） */
-  opacity: 1; /* 不透明 */
+  display: none; /* 要素を非表示（場所は確保しない） */
+}
+```
+
+```css
+.element {
+  opacity: 0; /* 要素を透明にする（場所は確保する） */
 }
 ```
 
@@ -197,7 +219,7 @@ h1 {
 .text {
   font-size: 16px; /* サイズ */
   font-weight: bold; /* 太さ */
-  text-align: center; /* 配置 */
+  text-align: center; /* 中央揃い */
 }
 ```
 
@@ -219,10 +241,11 @@ h1 {
 
 **👉 実践演習**:
 
-1. `example/UCC Smile Festa 2026 開催｜UCCのカフェ開業支援_files/app.css` を開く
-2. `#00A35E` を検索して、該当する要素を見つける
-3. 別の色に変更（例：`#FF6B6B`）
+1. `example/style.css` を開く
+2. `#5D4037`（メインのブラウン色）を検索して、該当する要素を見つける
+3. 別の色に変更（例：`#1976D2` 青、`#388E3C` 緑）
 4. ブラウザで確認（`Ctrl + F5` で強制リロード）
+5. ボタンやヘッダーの色が変わることを確認
 
 ---
 
@@ -236,8 +259,9 @@ JavaScript は Web ページに動きやインタラクションを追加する�
 
 ```javascript
 // 変数の宣言
-const message = 'こんにちは';
-let count = 0;
+var age = 20; // 変数
+let count = 0; // 変数
+const message = 'こんにちは'; // 定数
 
 // 関数の定義
 function sayHello() {
@@ -248,7 +272,7 @@ function sayHello() {
 console.log('デバッグメッセージ');
 ```
 
-### 4.3 素の JavaScript による DOM 操作（参考）
+### 4.3 素の JavaScript による DOM 操作
 
 JavaScript で HTML 要素を操作することを「DOM 操作」と呼びます。素の JavaScript（Vanilla JavaScript）でも DOM 操作は可能ですが、コードが長くなりがちです。
 
@@ -264,18 +288,31 @@ button.addEventListener('click', function () {
 
 **👉 実践**:
 
-1. `example/UCC Smile Festa 2026 開催｜UCCのカフェ開業支援.html` をブラウザで開く
+1. `example/index.html` をブラウザで開く
 2. 開発者ツールのConsoleで試してみる：
 
 ```javascript
 alert('JavaScriptが動いています！');
 ```
 
+3. ページに表示されている要素を操作してみる：
+
+```javascript
+// 「イベントについて」セクションの背景色を変更
+document.querySelector('.about').style.backgroundColor = '#e0e0e0';
+```
+
 ---
 
 ## 第5章：jQuery の基本
 
-### 5.1 なぜ jQuery が生まれたのか
+### 5.1 jQuery とは
+
+jQuery は JavaScript ライブラリで、以下の特徴があります：
+
+- **簡潔な記法**: 少ないコードで多くのことができる
+- **クロスブラウザ対応**: ブラウザの違いを気にせず書ける
+- **豊富なプラグイン**: アニメーションやUIコンポーネントが簡単に追加できる
 
 #### 昔の JavaScript の問題点
 
@@ -312,18 +349,9 @@ jQuery は「Write Less, Do More（より少ないコードで、より多くの
 
 - 現代のブラウザは標準化が進み、互換性問題は大幅に減少
 - 新規プロジェクトでは Vanilla JavaScript や React/Vue などのフレームワークが主流
-- **しかし、既存サイトの多くは今でも jQuery を使用している**
-- 納品されるサイトでは jQuery がまだよく使われているため、理解しておくことが重要
+- **Web 制作の現場では今でも jQuery が多く使われている**
 
-### 5.2 jQuery とは
-
-jQuery は JavaScript ライブラリで、以下の特徴があります：
-
-- **簡潔な記法**: 少ないコードで多くのことができる
-- **クロスブラウザ対応**: ブラウザの違いを気にせず書ける
-- **豊富なプラグイン**: アニメーションやUIコンポーネントが簡単に追加できる
-
-### 5.3 jQuery の基本パターン
+### 5.2 jQuery の基本パターン
 
 ```javascript
 // 要素の選択（CSSセレクタと同じ）
@@ -332,7 +360,7 @@ $('#header'); // IDで選択
 $('h1'); // タグで選択
 ```
 
-### 5.4 よく使う操作
+### 5.3 よく使う操作
 
 #### テキストの変更
 
@@ -366,24 +394,39 @@ $('.button').on('click', function () {
 });
 ```
 
-### 5.5 example の実例
+### 5.4 example-simple の実例
+
+`example/script.js` を開いてみましょう。以下のようなコードがあります：
 
 ```javascript
-// exampleの例 - ポップアップを閉じる
-$('#pop-up .close').on('click', function () {
-  $('#pop-up').fadeOut();
+// ハンバーガーメニューの開閉
+$('#hamburger').on('click', function () {
+  $(this).toggleClass('is-active');
+  $('#mobile-menu').toggleClass('is-open');
+});
+
+// 予約ボタンのクリック処理
+$('#reserve-btn').on('click', function () {
+  alert('予約開始時にお知らせします！');
 });
 ```
 
 **👉 実践**:
 
-1. `example/UCC Smile Festa 2026 開催｜UCCのカフェ開業支援.html` をブラウザで開く
+1. `example/index.html` をブラウザで開く
 2. 開発者ツールのConsoleで試してみる：
 
 ```javascript
-$('.loading').hide();
-alert('jQueryが動いています！');
+// ヒーローセクションをフェードアウト
+$('.hero').fadeOut();
+
+// 3秒後にフェードイン
+setTimeout(function() {
+  $('.hero').fadeIn();
+}, 3000);
 ```
+
+3. 「予約開始を通知する」ボタンをクリックして、アラートが表示されることを確認
 
 ---
 
@@ -403,7 +446,7 @@ alert('jQueryが動いています！');
 5. 問題なければ本番反映
 ```
 
-### 6.2 パターン1：テキストの修正【簡単 ★☆☆】
+### 6.2 パターン1：テキストの修正
 
 #### 手順：
 
@@ -423,7 +466,7 @@ alert('jQueryが動いています！');
 <h1 class="title">新しいタイトル</h1>
 ```
 
-### 6.3 パターン2：色の変更【簡単 ★☆☆】
+### 6.3 パターン2：色の変更
 
 #### 手順：
 
@@ -447,22 +490,10 @@ alert('jQueryが動いています！');
 }
 ```
 
-#### よく使う色コード：
-
-```css
-#FF0000  赤
-#00FF00  緑
-#0000FF  青
-#000000  黒
-#FFFFFF  白
-#FFA500  オレンジ
-```
-
-### 6.4 パターン3：画像の差し替え【簡単 ★☆☆】
-
+### 6.4 パターン3：画像の差し替え
 #### 手順：
 
-1. 新しい画像を `images/` フォルダにアップロード
+1. 新しい画像をアップロード
 2. HTMLファイルで画像のパスを検索
 3. ファイル名を変更
 4. ブラウザで確認
@@ -471,15 +502,15 @@ alert('jQueryが動いています！');
 
 ```html
 <!-- 変更前 -->
-<img src="images/old-photo.jpg" alt="写真" />
+<img src="old-photo.jpg" alt="写真" />
 
 <!-- 変更後 -->
-<img src="images/new-photo.jpg" alt="写真" />
+<img src="new-photo.jpg" alt="写真" />
 ```
 
 **注意**: 画像サイズが違うとレイアウトが崩れる可能性があります
 
-### 6.5 パターン4：リンク先の変更【簡単 ★☆☆】
+### 6.5 パターン4：リンク先の変更
 
 ```html
 <!-- 変更前 -->
@@ -489,17 +520,17 @@ alert('jQueryが動いています！');
 <a href="https://new-site.com">リンク</a>
 ```
 
-### 6.6 パターン5：要素の非表示【中級 ★★☆】
+### 6.6 パターン5：要素の非表示
 
-#### 方法1: CSSで非表示（推奨）
+#### 方法1: CSSで非表示
 
 ```css
 .unwanted-element {
-  display: none !important;
+  display: none;
 }
 ```
 
-#### 方法2: HTMLで削除（注意が必要）
+#### 方法2: HTMLで削除
 
 ```html
 <!-- タグの前後を確認して、慎重に削除 -->
@@ -510,16 +541,32 @@ alert('jQueryが動いています！');
 
 #### 演習1: テキスト修正
 
-- `example/UCC Smile Festa 2026 開催｜UCCのカフェ開業支援.html` のページタイトルを変更してみる
+1. `example/index.html` を開く
+2. `<h2 class="hero__title">Coffee Festa 2026</h2>` を見つける
+3. 「Coffee Festa 2026」を「コーヒー祭り 2026」に変更
+4. ブラウザで確認
 
 #### 演習2: 色の変更
 
-- ボタンやリンクの色を変更してみる
+1. `example/style.css` を開く
+2. `.btn--primary` のスタイルを見つける
+3. `background-color` を `#E53935`（赤色）に変更
+4. ブラウザで確認
 
 #### 演習3: 要素の非表示
 
-- 開発者ツールで要素を特定
-- CSSで非表示にしてみる
+1. ブラウザで開発者ツールを開く
+2. 「イベントについて」セクションのクラス名を確認（`.about`）
+3. `example/style.css` の末尾に以下を追加：
+
+```css
+.about {
+  display: none;
+}
+```
+
+4. ブラウザで確認し、セクションが消えることを確認
+5. 確認後、追加したCSSを削除して元に戻す
 
 ---
 
@@ -552,7 +599,7 @@ alert('jQueryが動いています！');
    ```html
    <!-- ❌ 間違い -->
    <div class="box">
-     <p>テキスト</p>
+     <p>テキスト
    </div>
 
    <!-- ✅ 正しい -->
@@ -567,6 +614,9 @@ alert('jQueryが動いています！');
 3. **クラス名の間違い**
    - HTMLとCSSでクラス名が一致しているか確認
 
+4. **CSSの実装ミス**
+   - AIに聞いてみよう
+
 ### 7.3 問題：JavaScriptが動かない
 
 #### 確認手順：
@@ -579,8 +629,8 @@ alert('jQueryが動いています！');
 
 ```
 1. バックアップから復元
-2. エラーメッセージをGoogleで検索
-3. エンジニアに相談（明確な情報とともに）
+2. エラーメッセージをGoogleで検索またはAIに聞く
+3. エンジニアに相談
 ```
 
 ---
@@ -662,7 +712,7 @@ PC・スマホ両方
 
 ```
 1. 開発者ツールでエラー確認
-2. エラーメッセージで Google 検索または AI に聞く
+2. エラーメッセージでGoogle検索またはAIに聞く
 3. バックアップから復元
 4. エンジニアに相談
 ```

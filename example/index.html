@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coffee Festa 2026 - サンプルイベントページ</title>
+
+    <!-- スタイルシートの読み込み -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- ========== ヘッダー ========== -->
+    <header class="header">
+      <div class="header__inner">
+        <h1 class="header__logo">Coffee Festa</h1>
+
+        <!-- PC用ナビゲーション -->
+        <nav class="nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#about" class="nav__link">イベントについて</a>
+            </li>
+            <li class="nav__item">
+              <a href="#schedule" class="nav__link">会場・日時</a>
+            </li>
+            <li class="nav__item">
+              <a href="#info" class="nav__link">開催概要</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- ハンバーガーメニューボタン（スマホ用） -->
+        <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- スマホ用メニュー -->
+    <div class="mobile-menu" id="mobile-menu">
+      <ul class="mobile-menu__list">
+        <li class="mobile-menu__item">
+          <a href="#about" class="mobile-menu__link">イベントについて</a>
+        </li>
+        <li class="mobile-menu__item">
+          <a href="#schedule" class="mobile-menu__link">会場・日時</a>
+        </li>
+        <li class="mobile-menu__item">
+          <a href="#info" class="mobile-menu__link">開催概要</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ========== メインコンテンツ ========== -->
+    <main>
+      <!-- ヒーローセクション -->
+      <section class="hero">
+        <div class="hero__content">
+          <p class="hero__subtitle">2026年春開催</p>
+          <h2 class="hero__title">Coffee Festa 2026</h2>
+          <p class="hero__description">
+            コーヒーの魅力を体験できる<br />特別なイベント
+          </p>
+          <a href="#schedule" class="btn btn--primary">会場・日時を見る</a>
+        </div>
+      </section>
+
+      <!-- イベントについてセクション -->
+      <section class="about" id="about">
+        <div class="container">
+          <h2 class="section-title">イベントについて</h2>
+          <div class="about__content">
+            <p class="about__text">
+              Coffee Festa
+              は、コーヒー愛好家のための特別なイベントです。<br />
+              様々なコーヒーの試飲や、バリスタによるデモンストレーション、<br />
+              最新のコーヒー機器の展示などをお楽しみいただけます。
+            </p>
+            <div class="about__features">
+              <div class="feature">
+                <div class="feature__icon">☕</div>
+                <h3 class="feature__title">試飲体験</h3>
+                <p class="feature__text">世界中のコーヒーを試飲できます</p>
+              </div>
+              <div class="feature">
+                <div class="feature__icon">🎓</div>
+                <h3 class="feature__title">セミナー</h3>
+                <p class="feature__text">プロから学べるワークショップ</p>
+              </div>
+              <div class="feature">
+                <div class="feature__icon">🛒</div>
+                <h3 class="feature__title">即売会</h3>
+                <p class="feature__text">特別価格でコーヒー豆を購入</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 会場・日時セクション -->
+      <section class="schedule" id="schedule">
+        <div class="container">
+          <h2 class="section-title">会場・日時</h2>
+          <div class="schedule__grid">
+            <!-- 東京会場 -->
+            <div class="venue-card">
+              <div class="venue-card__header">
+                <span class="venue-card__label">Tokyo</span>
+                <h3 class="venue-card__title">東京</h3>
+              </div>
+              <div class="venue-card__body">
+                <p class="venue-card__date">
+                  <strong>3/24</strong> (火) 10:00 - 17:00<br />
+                  <strong>3/25</strong> (水) 10:00 - 16:00
+                </p>
+                <p class="venue-card__place">
+                  東京イベントホール<br />
+                  〒100-0000 東京都千代田区〇〇1-1-1
+                </p>
+                <a href="#" class="btn btn--secondary">会場の詳細</a>
+              </div>
+            </div>
+
+            <!-- 大阪会場 -->
+            <div class="venue-card">
+              <div class="venue-card__header">
+                <span class="venue-card__label">Osaka</span>
+                <h3 class="venue-card__title">大阪</h3>
+              </div>
+              <div class="venue-card__body">
+                <p class="venue-card__date">
+                  <strong>4/7</strong> (火) 10:00 - 17:00<br />
+                  <strong>4/8</strong> (水) 10:00 - 16:00
+                </p>
+                <p class="venue-card__place">
+                  大阪コンベンションセンター<br />
+                  〒530-0000 大阪府大阪市北区〇〇2-2-2
+                </p>
+                <a href="#" class="btn btn--secondary">会場の詳細</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 開催概要セクション -->
+      <section class="info" id="info">
+        <div class="container">
+          <h2 class="section-title">開催概要</h2>
+          <div class="info__table">
+            <div class="info__row">
+              <div class="info__label">イベント名</div>
+              <div class="info__value">Coffee Festa 2026</div>
+            </div>
+            <div class="info__row">
+              <div class="info__label">主催</div>
+              <div class="info__value">コーヒーフェスタ実行委員会</div>
+            </div>
+            <div class="info__row">
+              <div class="info__label">入場料</div>
+              <div class="info__value">無料（事前予約制）</div>
+            </div>
+            <div class="info__row">
+              <div class="info__label">お問い合わせ</div>
+              <div class="info__value">
+                <a href="mailto:info@example.com">info@example.com</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="info__cta">
+            <p class="info__cta-text">参加予約は2026年2月開始予定</p>
+            <button class="btn btn--primary btn--large" id="reserve-btn">
+              予約開始を通知する
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ========== フッター ========== -->
+    <footer class="footer">
+      <div class="container">
+        <p class="footer__text">© 2026 Coffee Festa. All rights reserved.</p>
+        <p class="footer__note">※このページは学習用のサンプルです</p>
+      </div>
+    </footer>
+
+    <!-- ========== JavaScript ========== -->
+    <!-- jQuery（CDNから読み込み） -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- 自作スクリプト -->
+    <script src="script.js"></script>
+  </body>
+</html>
