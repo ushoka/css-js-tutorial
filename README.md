@@ -262,10 +262,11 @@ console.log('デバッグメッセージ');
 JavaScript で HTML 要素を操作することを「DOM 操作」と呼びます。素の JavaScript（Vanilla JavaScript）でも DOM 操作は可能ですが、コードが長くなりがちです。
 
 ```javascript
-// 素のJavaScript - コードが長い
-const button = document.querySelector('.button');
-button.addEventListener('click', function () {
-  alert('クリックされました');
+const buttons = document.querySelectorAll('.button');
+buttons.forEach(function (button) {
+  button.addEventListener('click', function () {
+    this.classList.add('active');
+  });
 });
 ```
 
@@ -737,9 +738,16 @@ $('#id') // IDで選択
 
 ### ショートカット
 
+Visual Studio Code
+
 ```
 Ctrl + F (Cmd + F)           ファイル内検索
 Ctrl + Shift + F             プロジェクト全体検索
+```
+
+ブラウザ
+
+```
 F12                          開発者ツール
 Ctrl + F5 (Cmd + Shift + R)  強制リロード
 ```
